@@ -4,6 +4,7 @@ from flask import Blueprint
 hello = Blueprint('hello',__name__)
 
 @hello.route('/')
+@hello.route('/d')
 @hello.route('/hola')
 def metodo_hola():
     return "Hola mundo"
