@@ -1,3 +1,7 @@
 <h3>{{ product['name'] }}</h3>
 <p>{{ product['category'] }}</p>
-<p>$ {{ product['price'] | default('sin precio', True)}}</p>
+<p>$ {{ product['price'] }}</p>
+<p>filter default : {{ product['price'] | default('sin precio', True)}}</p>
+<p>
+    filter safe : {{ "<h1>Hola Mundo</h1>" | safe }}
+</p>
