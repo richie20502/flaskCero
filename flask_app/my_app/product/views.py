@@ -1,5 +1,6 @@
 #from my_app import app
-from flask import Blueprint
+from flask import Blueprint, render_template
+from werkzeug.exceptions import abort
 from my_app.product.model.products import PRODUCTS
 
 product = Blueprint('product',__name__)
@@ -8,4 +9,11 @@ product = Blueprint('product',__name__)
 @product.route('/home')
 def index():
     print(PRODUCTS.items())
-    return "Hola mundo"
+    return render_template('product/index.html', products = PRODUCTS)
+
+@product.route('/product/<int:id>')
+def detail(id):
+    product = PRODUCTS.get(id)
+    if not product:
+        abort(404)
+    return render_template('product/show.html', product = product)
