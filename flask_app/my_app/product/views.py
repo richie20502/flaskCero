@@ -17,3 +17,8 @@ def detail(id):
     if not product:
         abort(404)
     return render_template('product/show.html', product = product)
+
+@product.route('/filter/<int:id>')
+def filter(id):
+    product = PRODUCTS.get(id)
+    return render_template('product/filter.html', product = product)
