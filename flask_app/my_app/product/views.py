@@ -22,3 +22,7 @@ def detail(id):
 def filter(id):
     product = PRODUCTS.get(id)
     return render_template('product/filter.html', product = product)
+
+@product.app_template_filter('iva')
+def iva_filter(product):
+    return product['price'] * .20 + product['price']
